@@ -1,4 +1,4 @@
-const { readJsonFile } = require("../utils/readJsonFile");
+const { readJsonFile, writeJsonFile } = require("../utils/jsonFile");
 
 const getPeople = (req, res) => {
   const people = readJsonFile("./data/people.json");
@@ -12,4 +12,13 @@ const getPerson = (req, res) => {
   res.status(200).json(person);
 };
 
-module.exports = { getPeople, getPerson };
+const createPerson = (req, res) => {
+  const { firstName, lastName, birthday, job, city } = req.body;
+  let people = readJsonFile("./data/people.json");
+  const id = people[people.length - 1].id + 1;
+  people.push({ id, firstName, lastName, birthday, job, city });
+  writeJsonFile(people, "./data/people.json");
+  res.status(201).json(people);
+};
+
+module.exports = { getPeople, getPerson, createPerson };

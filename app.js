@@ -4,6 +4,8 @@ const people = require("./routes/people");
 
 const app = express();
 
+app.use(express.json());
+
 app.use("/people", people);
 
 app.listen(5000, () => {

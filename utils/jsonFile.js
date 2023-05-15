@@ -11,4 +11,13 @@ function readJsonFile(filename) {
   }
 }
 
-module.exports = { readJsonFile };
+function writeJsonFile(object, filename) {
+  try {
+    const jsonData = JSON.stringify(object);
+    fs.writeFileSync(filename, jsonData);
+  } catch (error) {
+    console.error("Error while writing JSON:", error);
+  }
+}
+
+module.exports = { readJsonFile, writeJsonFile };

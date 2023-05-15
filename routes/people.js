@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const { getPeople, getPerson } = require("../controllers/people");
+const { getPeople, getPerson, createPerson } = require("../controllers/people");
 
-router.route("/").get(getPeople);
+router.route("/").get(getPeople).post(createPerson);
 
 router.route("/:id").get(getPerson);
 
