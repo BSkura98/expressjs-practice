@@ -5,4 +5,11 @@ const getPeople = (req, res) => {
   res.status(200).json(people);
 };
 
-module.exports = { getPeople };
+const getPerson = (req, res) => {
+  const { id } = req.params;
+  const people = readJsonFile("./data/people.json");
+  const person = people.find((p) => p.id === Number(id));
+  res.status(200).json(person);
+};
+
+module.exports = { getPeople, getPerson };
