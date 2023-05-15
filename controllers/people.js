@@ -56,4 +56,22 @@ const updatePerson = (req, res) => {
   });
 };
 
-module.exports = { getPeople, getPerson, createPerson, updatePerson };
+const deletePerson = (req, res) => {
+  const { id } = req.params;
+  let people = readJsonFile("./data/people.json");
+  const person = people.find((p) => p.id === Number(id));
+  if (!person) {
+    res.status(404).json({ message: "Person not found" });
+  }
+  people = people.filter((p) => p.id !== Number(id));
+  writeJsonFile(people, "./data/people.json");
+  res.status(200).json(people);
+};
+
+module.exports = {
+  getPeople,
+  getPerson,
+  createPerson,
+  updatePerson,
+  deletePerson,
+};
