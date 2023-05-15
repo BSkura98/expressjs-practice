@@ -1,0 +1,9 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthday": "2000-05-15T15:23:16.346Z",
+    "job": "Accountant",
+    "city": "New York"
+  }
+]
